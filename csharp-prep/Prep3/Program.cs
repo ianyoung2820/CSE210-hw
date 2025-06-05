@@ -41,3 +41,25 @@ class Program
         }
     }
 }
+
+public class WordUnit
+{
+    private readonly string _rawText;
+    private bool _isHidden;
+
+    public WordUnit(string word)
+    {
+        _rawText = word;
+        _isHidden = false;
+    }
+
+    public void Mask()     => _isHidden = true;
+    public bool IsMasked() => _isHidden;
+
+    public string Render()
+    {
+        return _isHidden 
+            ? new string('_', _rawText.Length) 
+            : _rawText;
+    }
+}
